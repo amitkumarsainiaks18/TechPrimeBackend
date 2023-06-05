@@ -165,9 +165,12 @@ taskRoutes.get("/projects/departments", async(req,res) => {
     const totalHR = await TaskModel.countDocuments({department:"HR"});
     const hrClosed = await TaskModel.countDocuments({ department: "HR", status: "Closed" });
 
+    const closedOnes = [strategyClosed, financeClosed, qualityClosed, maintClosed,storeClosed, hrClosed];
+    const totalOnes = [totalStrategy, totalFinance, totalQuality, totalMaint, totalStore, totalHR];
+    const statCategory = ['STR', 'FIN', 'QLT', 'MAN', 'STO', 'HR'];
 
-    res.status(200).send({totalStrategy, strategyClosed, totalFinance,financeClosed, totalQuality,qualityClosed,
-      totalMaint, maintClosed, totalStore, storeClosed, totalHR, hrClosed})
+
+    res.status(200).send({totalOnes,closedOnes,statCategory})
   } 
   
   catch (err) {
