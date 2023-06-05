@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const authentication = (req,res,next) => {
 
-    const token = req.headers.Authorization?[0];
+    const token = req.headers.authentication?.split(" ")[1];
 
     if(token){
         const decoded = jwt.verify(token, process.env.secret_key, (err,decoded) => {
@@ -24,13 +24,13 @@ const authentication = (req,res,next) => {
             }
 
             else{
-                res.send({"message":"Please login first"});
+                res.status(403).send({"message":"Please login first"});
             }
         })
     }
 
     else{
-        res.send({"message":"Please login first"});
+        res.status(403).send({"message":"Please login first"});
     }
 }
 
