@@ -24,13 +24,13 @@ const authentication = (req,res,next) => {
             }
 
             else{
-                res.send({"message":"Please login first"});
+                res.status(404).send({"message":"Please login first"});
             }
         })
     }
 
     else{
-        res.send({"message":"Please login first"});
+        res.status(404).send({"message":"Please login first"});
     }
 }
 
