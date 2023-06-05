@@ -29,10 +29,26 @@ taskRoutes.get("/projects", async (req, res) => {
       pipeline.push(searchStage);
     }
 
-    if (sort) {
-      const sortStage = {
-        $sort: { [sort]: 1 },
-      };
+//     if (sort) {
+//       const sortStage = {
+//         $sort: { [sort]: 1 },
+//       };
+//       pipeline.push(sortStage);
+//     }
+    
+        if (sort) {
+      let sortStage;
+
+      if (sort === "_id") {
+        sortStage = {
+          $sort: { _id: -1 },
+        };
+      } else {
+        sortStage = {
+          $sort: { [sort]: 1 },
+        };
+      }
+
       pipeline.push(sortStage);
     }
 
