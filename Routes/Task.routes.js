@@ -14,15 +14,17 @@ taskRoutes.get("/projects", async (req, res) => {
       const searchStage = {
         $match: {
           $or: [
-            { title: { $regex: search, $options: "i" } },
-            { reason: { $regex: search, $options: "i" } },
-            { type: { $regex: search, $options: "i" } },
-            { divison: { $regex: search, $options: "i" } },
-            { category: { $regex: search, $options: "i" } },
-            { priority: { $regex: search, $options: "i" } },
-            { department: { $regex: search, $options: "i" } },
-            { location: { $regex: search, $options: "i" } },
-            { status: { $regex: search, $options: "i" } },
+            { title: { $regex: new RegExp(search, "i") } },
+            { reason: { $regex: new RegExp(search, "i") } },
+            { type: { $regex: new RegExp(search, "i") } },
+            { divison: { $regex: new RegExp(search, "i") } },
+            { category: { $regex: new RegExp(search, "i") } },
+            { priority: { $regex: new RegExp(search, "i") } },
+            { department: { $regex: new RegExp(search, "i") } },
+            { location: { $regex: new RegExp(search, "i") } },
+            { status: { $regex: new RegExp(search, "i") } },
+            
+//             { status: { $regex: search, $options: "i" } },
           ],
         },
       };
