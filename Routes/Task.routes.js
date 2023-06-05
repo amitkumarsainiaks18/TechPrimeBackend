@@ -49,7 +49,7 @@ taskRoutes.get("/projects", async (req, res) => {
       TaskModel.aggregate(totalCountPipeline)
     ]);
 
-    res.status(200).send({ projects, totalCount: totalCount[0]?.totalCount || 0 });
+    res.status(200).send({ projects.reverse(), totalCount: totalCount[0]?.totalCount || 0 });
 
   } 
   
