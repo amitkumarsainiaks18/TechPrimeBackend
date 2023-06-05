@@ -24,7 +24,7 @@ app.get("/", (req,res) => {
 
 app.use("/", userRoutes)
 
-// app.use(authentication);
+app.use(authentication);
 app.use("/", taskRoutes);
 
 
